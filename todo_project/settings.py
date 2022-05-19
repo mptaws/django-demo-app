@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = ''
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ['MYSQL_DATA']['dbClusterIdentifier']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = FALSE
@@ -83,12 +83,12 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'NAME': os.environ['MYSQL_DATA']['dbname'],
+        'USER': os.environ['MYSQL_DATA']['username'],
+        'PASSWORD': os.environ['MYSQL_DATA']['password'],
         # Or an IP Address that your DB is hosted on
-        'HOST': os.environ['DB_HOST'],
-        'PORT': os.environ['DB_PORT'],
+        'HOST': os.environ['MYSQL_DATA']['host'],
+        'PORT': os.environ['MYSQL_DATA']['port'],
     }
 }
 
