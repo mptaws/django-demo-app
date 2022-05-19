@@ -13,9 +13,7 @@ import os
 from pathlib import Path
 from pickle import FALSE
 
-# import pymysql
-
-# pymysql.install_as_MySQLdb()
+import requests
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,9 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
+METADATA_URI = os.environ['ECS_CONTAINER_METADATA_URI']
+container_metadata = requests.get(METADATA_URI).json()
+ALLOWED_HOSTS.append(container_metadata['Networks'][0]['IPv4Addresses'][0])
+
+
 
 
 # Application definition
@@ -50,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'todo_app.middleware.HealthCheckMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
