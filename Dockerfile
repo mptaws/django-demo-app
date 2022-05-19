@@ -1,5 +1,4 @@
 FROM python:3.9-slim
-RUN sudo apt-get install libmysqlclient-dev
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
