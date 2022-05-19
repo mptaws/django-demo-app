@@ -21,6 +21,6 @@ EXPOSE 8000
 EXPOSE 3306
 
 COPY . ./
-
-RUN ["chmod", "+x", "docker-entrypoint.sh"]
+RUN ["ls -l"]
+#RUN ["chmod", "+x", "docker-entrypoint.sh"]
 ENTRYPOINT ["./docker-entrypoint.sh"]
