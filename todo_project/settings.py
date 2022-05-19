@@ -13,8 +13,6 @@ import os
 from pathlib import Path
 from pickle import FALSE
 
-import requests
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,8 +31,6 @@ ALLOWED_HOSTS = []
 METADATA_URI = os.environ['ECS_CONTAINER_METADATA_URI']
 container_metadata = requests.get(METADATA_URI).json()
 ALLOWED_HOSTS.append(container_metadata['Networks'][0]['IPv4Addresses'][0])
-
-
 
 
 # Application definition
