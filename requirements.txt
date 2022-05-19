@@ -1,5 +1,8 @@
 asgiref==3.5.2
+autopep8==1.6.0
 Django==3.2.9
+django-mysql==4.6.0
+pycodestyle==2.8.0
 pytz==2022.1
 sqlparse==0.4.2
-mysqlclient==1.4.6
+toml==0.10.2
