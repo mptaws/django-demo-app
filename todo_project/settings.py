@@ -28,10 +28,6 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False
 
 ALLOWED_HOSTS = []
-METADATA_URI = os.environ['ECS_CONTAINER_METADATA_URI']
-container_metadata = requests.get(METADATA_URI).json()
-ALLOWED_HOSTS.append(container_metadata['Networks'][0]['IPv4Addresses'][0])
-
 
 # Application definition
 
